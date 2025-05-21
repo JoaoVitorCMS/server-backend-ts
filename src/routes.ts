@@ -1,5 +1,6 @@
 import { Router, Request, Response } from "express";
 import userControllers from "./controllers/user";
+import user from "./controllers/user";
 const routes = Router();
 
 //rota de teste
@@ -64,6 +65,8 @@ routes.get("/imagem", (req: Request, res: Response): any =>{
 })
 
 routes.post("/users", (req: Request, res: Response): any => userControllers.create(req, res))
-
-
+routes.get("/users", (req: Request, res: Response): any => userControllers.read(req, res))
+routes.put("/users/:id", (req: Request, res: Response): any => userControllers.updade(req, res))
+routes.delete("/users/:id", (req: Request, res: Response): any => userControllers.delete(req, res))
+routes.post("/login", (req: Request, res: Response): any => userControllers.login(req, res))
 export default routes;
